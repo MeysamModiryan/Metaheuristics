@@ -98,3 +98,15 @@ def decode(route):
     N =list(dict.fromkeys(my_list))
     N.remove(0)
     return N
+
+def distance_array(param):
+    loc = param['location']
+    n = param['num_of_customer']
+    distance_aray = np.ones([n+1,n+1])*np.inf
+    
+    loc = np.asarray(loc)
+    for i in range(n+1):
+        for j in range(n+1):
+            if i!=j:
+                distance_aray[i][j] = np.linalg.norm(loc[i]-loc[j])
+    return distance_aray
